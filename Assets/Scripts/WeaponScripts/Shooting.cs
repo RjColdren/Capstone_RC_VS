@@ -40,6 +40,8 @@ namespace CapstoneFps_RC
                     ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
                 }
             }
+
+
             //IF the fireRate is above 0
             if(fireRate > 0)
             {
@@ -119,6 +121,8 @@ namespace CapstoneFps_RC
             reloading = false;
 
             reloadUI.SetActive(false);
+
+            ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
         }
     }
 }

@@ -24674,7 +24674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You Have No Ammo
+  m_Text: Out of Ammo!
 --- !u!222 &1595727800
 CanvasRenderer:
   m_ObjectHideFlags: 0

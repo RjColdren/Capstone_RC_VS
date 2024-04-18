@@ -47,6 +47,12 @@ public class InventoryItemController : MonoBehaviour
                 //if it is an artifact, do nothing
             case Item.ItemType.Artifact:
                 break;
+
+            case Item.ItemType.AmmoCrate:
+                PlayerObjectInteraction.instance.AddAmmo(item.value);
+                RemoveItem();
+                break;
+
                 //default do nothing
             default: 
                 break;

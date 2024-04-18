@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TowerDefense;
 using UnityEngine.UI;
 using UnityEngine;
+using CapstoneFps_RC;
 
 public class PlayerObjectInteraction : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerObjectInteraction : MonoBehaviour
 
     //Instance of the health script
     Health health;
+    Shooting shooting;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class PlayerObjectInteraction : MonoBehaviour
     {
         //finds the health component in the gameObject
         health = GetComponent<Health>();
+        shooting = GetComponentInChildren<Shooting>();
     }
 
     //Increases the health when called
@@ -30,6 +33,12 @@ public class PlayerObjectInteraction : MonoBehaviour
     {
         //Adds whatever value is to the current health.
         health.currentHealth += value;
+        ValueDisplay.OnValueChanged.Invoke(gameObject.name + "Health", health.currentHealth);
+    }
 
+    public void AddAmmo(int value)
+    {
+        shooting.fullAmmo += value;
+        ValueDisplay.OnValueChanged.Invoke("fullAmmo", shooting.fullAmmo);
     }
 }
