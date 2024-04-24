@@ -14,12 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3296896740344654507, guid: 24797ba292986584bb7eba960a8a0db5, type: 3}
       propertyPath: bulletVelocity
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1532050926080983880, guid: 24797ba292986584bb7eba960a8a0db5, type: 3}
       propertyPath: m_Name
-      value: Bullet Variant
+      value: Player Bullet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1590854584061677471, guid: 24797ba292986584bb7eba960a8a0db5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 355c097f178264e43bfc836c949c0ef2, type: 2}
     - target: {fileID: 1871257828289339329, guid: 24797ba292986584bb7eba960a8a0db5, type: 3}
       propertyPath: m_IsTrigger
       value: 0
