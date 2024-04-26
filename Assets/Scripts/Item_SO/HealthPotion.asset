@@ -15,5 +15,6 @@ MonoBehaviour:
   id: 3
   itemName: Health Potion
   value: 5
+  costValue: 6
   icon: {fileID: 21300000, guid: e9dbcc49ff71dea4593541b69c751544, type: 3}
   itemType: 0

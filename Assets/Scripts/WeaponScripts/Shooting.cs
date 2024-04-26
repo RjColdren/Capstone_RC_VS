@@ -76,8 +76,16 @@ namespace CapstoneFps_RC
                     }
                 }
 
+             
+
             }
-            
+
+            if (magSize > 8)
+            {
+                magSize = 8;
+                ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+            }
+
             //Sets "Aiming" in the animator to the value of aiming in the code
             animator.SetBool("Aiming", aiming);
 
@@ -123,8 +131,9 @@ namespace CapstoneFps_RC
                 reloadUI.SetActive(true);
               
                 //IF the R key is pressed
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R) && !reloading)
                 {
+                    reloading = true;
                     //calls reload
                     Reload();
                 }
@@ -162,7 +171,7 @@ namespace CapstoneFps_RC
          public void Reload()
         {
             //sets reloading to true
-            reloading = true;
+           
             //invokes that the reload is finished after the time to reload
             Invoke("ReloadFinished", timeToReload);
 
@@ -179,6 +188,7 @@ namespace CapstoneFps_RC
         //When the timer for reload is finished, do this:
         private void ReloadFinished()
         {
+            
             //Adds the reload size into the mag
                 magSize += reloadSize;
             //subtracts the reload size from the full ammo

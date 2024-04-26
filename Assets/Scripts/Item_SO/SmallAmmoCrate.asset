@@ -15,5 +15,6 @@ MonoBehaviour:
   id: 4
   itemName: SmallAmmoCrate
   value: 8
+  costValue: 6
   icon: {fileID: 21300000, guid: 7d48376009e997b42b4a1ddfb66c3362, type: 3}
   itemType: 2
