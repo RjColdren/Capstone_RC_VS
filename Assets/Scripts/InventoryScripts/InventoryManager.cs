@@ -160,4 +160,6 @@ public class InventoryManager : MonoBehaviour
         //Unlocks the cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+   
 }

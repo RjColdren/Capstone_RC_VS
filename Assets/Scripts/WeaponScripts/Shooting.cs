@@ -28,7 +28,11 @@ namespace CapstoneFps_RC
         public int reloadSize;
         public GameObject reloadUI;
         public GameObject noAmmoUI;
-
+        public GameObject fireParticle;
+        public AudioSource source;
+        public AudioClip fireSound; 
+        public AudioClip reloadSound;
+        public int reloadAmount;
 
         private void Awake()
         {
@@ -48,14 +52,19 @@ namespace CapstoneFps_RC
                     //if right click is pressed down
                     if (Input.GetMouseButtonDown(0))
                     {
+                        source.PlayOneShot(fireSound);
+                        Instantiate(fireParticle, barrel.position, barrel.rotation);
+                        Destroy(fireParticle, 1);
                         //calls fire
-                        Fire();
+                        Shoot();
                         //the mag size is decremented one
                         magSize--;
                         //the fire rate is set to half a second
                         fireRate = .5f;
                         //Changes the UI to display the current mag size
                         ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+
+                        reloadAmount++;
                     }
                 }
 
@@ -65,6 +74,9 @@ namespace CapstoneFps_RC
                     //IF the player presses left click
                     if (Input.GetMouseButtonDown(0))
                     {
+                        source.PlayOneShot(fireSound);
+                        Instantiate(fireParticle, barrel.position, barrel.rotation);
+                        Destroy(fireParticle, 1);
                         //call the shoot function
                         Shoot();
                         //mag size is decremented
@@ -73,6 +85,8 @@ namespace CapstoneFps_RC
                         fireRate = .7f;
                         //Changes the UI to display the current mag size
                         ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+
+                        reloadAmount++;
                     }
                 }
 
@@ -80,10 +94,17 @@ namespace CapstoneFps_RC
 
             }
 
+            //ensures the magSize will never go above 8.
             if (magSize > 8)
             {
                 magSize = 8;
                 ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+            }
+
+            //makes sure that you won't go over the amount of fullAmmo
+            if (fullAmmo < reloadAmount)
+            {
+                reloadAmount = fullAmmo;
             }
 
             //Sets "Aiming" in the animator to the value of aiming in the code
@@ -125,10 +146,9 @@ namespace CapstoneFps_RC
 
             //IF the magazine size is less than or equal to zero and there is
             //still ammo
-            if (magSize <= 0 && stillAmmo == true)
+            if (magSize < 8 && stillAmmo == true)
             {
-                //sets that you need to reload to true
-                reloadUI.SetActive(true);
+                
               
                 //IF the R key is pressed
                 if (Input.GetKeyDown(KeyCode.R) && !reloading)
@@ -136,9 +156,15 @@ namespace CapstoneFps_RC
                     reloading = true;
                     //calls reload
                     Reload();
+                    source.PlayOneShot(reloadSound);
                 }
             }
 
+            if (magSize <= 0 && stillAmmo == true)
+            {
+                //sets that you need to reload to true
+                reloadUI.SetActive(true);
+            }
             //if the mag size is less than or equal to zero AND still ammo is false:
             if (magSize <= 0 && stillAmmo == false)
             {
@@ -178,21 +204,25 @@ namespace CapstoneFps_RC
         }
 
         //actually fires the weapon
-        public void Fire()
+       /* public void Fire()
         {
             //instantiates the bullet at the position and rotation of the barrel
             Instantiate(bullet, barrel.position, barrel.rotation);
             
+            source.PlayOneShot(fireSound);
         }
-
+       */
         //When the timer for reload is finished, do this:
         private void ReloadFinished()
         {
             
             //Adds the reload size into the mag
-                magSize += reloadSize;
+                magSize += reloadAmount;
             //subtracts the reload size from the full ammo
-                fullAmmo -= reloadSize;
+                fullAmmo -= reloadAmount;
+
+                reloadAmount = 0;
+
             ValueDisplay.OnValueChanged.Invoke("fullAmmo", fullAmmo);
             //sets reloading to false
             reloading = false;
@@ -212,6 +242,8 @@ namespace CapstoneFps_RC
             //if there is a raycast
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
+                
+                
                 //check the name of the object it hit
                 Debug.Log(hit.transform.name);
                 //if the collider that was hit is tagged with "Enemy"

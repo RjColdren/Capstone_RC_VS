@@ -1,3 +1,4 @@
+using TowerDefense;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,11 +20,16 @@ namespace CapstoneFps_RC
         public Transform barrel;
         public int bulletSpeed;
         public LayerMask whatIsGround, whatIsPlayer;
+        public int bulletRange = 500;
+        Health health;
+        public int damage = 2;
 
         public Vector3 walkPoint;
         bool walkPointSet;
         public float walkPointRange;
-
+        public GameObject fireParticle;
+        public AudioSource source;
+        public AudioClip fireSound;
         private void Awake()
         {
             //Finds the Players Transform
@@ -119,20 +125,44 @@ namespace CapstoneFps_RC
         {
             //stops the enemy
             agent.SetDestination(transform.position);
-            
+
             //The enemy moves it's forward face towards the player
             transform.LookAt(player);
 
             //if it hasn't attacked already
             if (!attackedAlready)
             {
+                source.PlayOneShot(fireSound);
+                Instantiate(fireParticle, barrel.position, barrel.rotation);
+                Destroy(fireParticle, 1);
                 //instantiates a bullet in the gun
-                Instantiate(bullet, barrel.position, barrel.rotation);
+                // Instantiate(bullet, barrel.position, barrel.rotation);
                 //sets attacked already to true
-                attackedAlready = true;
-                //invokes Reset attack after the weapons fireRate
-                Invoke("ResetAttack", fireRate);
 
+                //create a raycast hit
+                RaycastHit hit;
+
+                //if there is a raycast
+                if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, bulletRange))
+                {
+
+
+                    //check the name of the object it hit
+                    Debug.Log(hit.transform.name);
+                    //if the collider that was hit is tagged with "Enemy"
+                    if (hit.collider.tag == "Player")
+                    {
+                        //get that objects health script
+                        health = hit.collider.GetComponent<Health>();
+                        //cause the enemy to take damage
+                        health.TakeDamage(damage);
+
+                        attackedAlready = true;
+                        //invokes Reset attack after the weapons fireRate
+                        Invoke("ResetAttack", fireRate);
+                    }
+                    
+                }
             }
         }
 

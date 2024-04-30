@@ -18,7 +18,8 @@ namespace CapstoneFps_RC
         public int bulletVelocity = 15;
         public float timeDestroy;
         public string tag;
-
+        RaycastHit hit;
+        public int range = 500;
  
         void Start()
         {
@@ -39,25 +40,28 @@ namespace CapstoneFps_RC
         //When this gameObject collides with something
         private void OnCollisionEnter(Collision other)
         {
-            //IF the other GameObjects tag is equal to tag
-            if (other.gameObject.tag == tag)
-            {
-                //Gets the health script from the other object and tries to damage it
-                Health.TryDamage(other.gameObject, damage);
+           // if (Physics.Raycast(bullet.transform.position, bullet.transform.forward, out hit, range))
+          //  {
+                //IF the other GameObjects tag is equal to tag
+                if (other.gameObject.tag == tag)
+                {
+                    //Gets the health script from the other object and tries to damage it
+                    Health.TryDamage(other.gameObject, damage);
 
-                //destroys the gameObject
-                Destroy(bullet);
-            }
+                    //destroys the gameObject
+                    Destroy(bullet);
+                }
 
-            // *IMPLEMENT LATER*
-            //IF it hits a building, spawn a bullet hole at the location that it hit.
-            /* if (other.gameObject.tag == "Building")
-             {
-                 Instantiate(bulletHole, gameObject.position, Quaternion.identity);
-             }
-            */
+                // *IMPLEMENT LATER*
+                //IF it hits a building, spawn a bullet hole at the location that it hit.
+                /* if (other.gameObject.tag == "Building")
+                 {
+                     Instantiate(bulletHole, gameObject.position, Quaternion.identity);
+                 }
+                */
 
-            
+
+           // }
         }
         private void BulletDestroy()
         {

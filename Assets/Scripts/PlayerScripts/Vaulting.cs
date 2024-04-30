@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 
 
-
 public class Vaulting : MonoBehaviour
 {
     //This Script was created by JonDevTutorials -- https://www.youtube.com/watch?v=9k7iBucBV7s&t=18s
@@ -12,6 +11,7 @@ public class Vaulting : MonoBehaviour
     public Camera cam;
     private float playerHeight = 3f;
     private float playerRadius = 1f;
+    public GameObject vaultingUI;
     void Start()
     {
         //Makes "vaultLayer" equal to the "VaultLayer" in unity
@@ -25,6 +25,7 @@ public class Vaulting : MonoBehaviour
     {
         //calls vault every update
         Vault();
+        //vaultingUI.SetActive(false);
     }
     
     //Allows the player to "Latch" onto objects and "Pull" themselves ontop of them
@@ -34,16 +35,23 @@ public class Vaulting : MonoBehaviour
         //if space is pushed
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //
+            
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out var firstHit, 1f, vaultLayer))
             {
-              //  print("vaultable in front");
+
+                //  print("vaultable in front");
+               // vaultingUI.SetActive(true);
+
                 if (Physics.Raycast(firstHit.point + (cam.transform.forward * playerRadius) + (Vector3.up * 0.6f * playerHeight), Vector3.down, out var secondHit, playerHeight))
                 {
-                  //  print("found place to land");
-                  //
+                    //  print("found place to land");
+                    //
+                    
                     StartCoroutine(LerpVault(secondHit.point, 0.5f));
+                   // 
                 }
+
+               
             }
         }
 
@@ -68,5 +76,7 @@ public class Vaulting : MonoBehaviour
         }
         //makes the transform position the target position
         transform.position = targetPosition;
+
+        //vaultingUI.SetActive(false);
     }
 }
