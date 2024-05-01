@@ -33,6 +33,7 @@ namespace CapstoneFps_RC
         public AudioClip fireSound; 
         public AudioClip reloadSound;
         public int reloadAmount;
+        public bool firing = false;
 
         private void Awake()
         {
@@ -52,19 +53,21 @@ namespace CapstoneFps_RC
                     //if right click is pressed down
                     if (Input.GetMouseButtonDown(0))
                     {
+                        firing = true;
                         source.PlayOneShot(fireSound);
                         Instantiate(fireParticle, barrel.position, barrel.rotation);
                         Destroy(fireParticle, 1);
+                        
                         //calls fire
                         Shoot();
                         //the mag size is decremented one
                         magSize--;
                         //the fire rate is set to half a second
-                        fireRate = .5f;
+                        fireRate = 1.2f;
                         //Changes the UI to display the current mag size
                         ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
-
                         reloadAmount++;
+                        Invoke("SetToFalse", 1f);
                     }
                 }
 
@@ -74,6 +77,7 @@ namespace CapstoneFps_RC
                     //IF the player presses left click
                     if (Input.GetMouseButtonDown(0))
                     {
+                        firing = true;
                         source.PlayOneShot(fireSound);
                         Instantiate(fireParticle, barrel.position, barrel.rotation);
                         Destroy(fireParticle, 1);
@@ -82,11 +86,14 @@ namespace CapstoneFps_RC
                         //mag size is decremented
                         magSize--;
                         //fireRate is set to .7
-                        fireRate = .7f;
+                        fireRate = 1.5f;
                         //Changes the UI to display the current mag size
                         ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+                        
 
                         reloadAmount++;
+
+                        Invoke("SetAimToFalse", 1f);
                     }
                 }
 
@@ -151,9 +158,18 @@ namespace CapstoneFps_RC
                 
               
                 //IF the R key is pressed
-                if (Input.GetKeyDown(KeyCode.R) && !reloading)
+                if (Input.GetKeyDown(KeyCode.R) && !reloading && !firing)
                 {
+                    if(aiming)
+                    {
+                        animator.SetBool("AimReloading", true);
+                    }
+                    else
+                    {
+                        animator.SetBool("Reloading", true);
+                    }
                     reloading = true;
+                    
                     //calls reload
                     Reload();
                     source.PlayOneShot(reloadSound);
@@ -231,6 +247,8 @@ namespace CapstoneFps_RC
             reloadUI.SetActive(false);
             //changes the value of MagAmmo to magsize
             ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
+            animator.SetBool("Reloading", false);
+            animator.SetBool("AimReloading", false);
         }
 
         //When the player shoots while aiming
@@ -238,7 +256,14 @@ namespace CapstoneFps_RC
         {
             //create a raycast hit
             RaycastHit hit;
-
+            if (aiming)
+            {
+                animator.SetBool("AimShooting", true);
+            }
+            else
+            {
+                animator.SetBool("Shooting", true);
+            }
             //if there is a raycast
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
@@ -255,6 +280,20 @@ namespace CapstoneFps_RC
                     health.TakeDamage(damage);
                 }
             }
+        }
+
+        public void SetToFalse()
+        {
+  
+            animator.SetBool("Shooting", false);
+            firing = false;
+        }
+
+        public void SetAimToFalse()
+        {
+            animator.SetBool("AimShooting", false);
+            firing = false;
+        
         }
     }
 }

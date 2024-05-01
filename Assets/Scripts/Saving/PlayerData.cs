@@ -12,14 +12,14 @@ namespace CapstoneFps_RC
         public int magSize;
         public int currentAmmo;
         public int playerHealth;
-        public List<Item> currentItems;
+       // public List<Item> currentItems;
 
-        public PlayerData(Health health, InventoryManager items, Shooting ammo)
+        public PlayerData(Health health, Shooting ammo)// InventoryManager inventory)
         {
             magSize = ammo.magSize;
             currentAmmo = ammo.fullAmmo;
             playerHealth = health.currentHealth;
-            currentItems = items.items;
+           // currentItems = inventory.items;
         }
     }
 }
