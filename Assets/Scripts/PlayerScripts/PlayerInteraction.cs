@@ -1,3 +1,4 @@
+using CapstoneFps_RC;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,15 @@ public class PlayerInteraction : MonoBehaviour
             //a collider the main camera is looking at
 
             targetInteraction = raycastHit.collider.gameObject.GetComponent<InteractionObject>();
+
+            /* if (raycastHit.collider.gameObject.tag == "BuyableObject")
+            {
+                ValueDisplay.OnValueChanged.Invoke("ObjectCostText", "Costs: $" + targetInteraction.cost);
+            }
+            else
+            {
+                ValueDisplay.OnValueChanged.Invoke("ObjectCostText", "");
+            } */
         }
 
         if (targetInteraction && targetInteraction.enabled)

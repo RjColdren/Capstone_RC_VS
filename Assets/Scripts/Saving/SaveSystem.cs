@@ -5,17 +5,20 @@ using TowerDefense;
 
 namespace CapstoneFps_RC
 {
+    [System.Serializable]
     public static class SaveSystem
     {
-       public static void SavePlayer (Health health, Shooting ammo) //InventoryManager inventory)
+       public static void SavePlayer (Health health, Shooting ammo, Currency currency) //InventoryItemController itemController)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/player.Capstone";
             FileStream stream = new FileStream(path, FileMode.Create);
 
-            PlayerData data = new PlayerData(health, ammo); //inventory);
+            PlayerData data = new PlayerData(health, ammo, currency); //itemController);
+            //InventoryData invData = new InventoryData(itemController);
 
             formatter.Serialize(stream, data);
+
             stream.Close();
         }
         public static PlayerData LoadPlayer()

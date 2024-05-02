@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 //Code created by SoloGameDev, Partially edited by me. Link: https://www.youtube.com/watch?v=AoD_F1fSFFg
-
+[System.Serializable]
 public class ItemPickup : MonoBehaviour
 {
     //Variables, Vectors, Scripts and Raycast

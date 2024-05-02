@@ -7,12 +7,17 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public Health health;
-    //public InventoryManager inventoryManager;
+   // public InventoryItemController itemController;
     public Shooting shooting;
+    public Currency currency;
+    private void Start()
+    {
+        LoadAll();
+    }
 
     public void SaveAll()
     {
-        SaveSystem.SavePlayer(health, shooting); // inventoryManager);
+        SaveSystem.SavePlayer(health, shooting, currency); //itemController);
     }
 
     public void LoadAll()
@@ -20,13 +25,15 @@ public class SaveManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         health.currentHealth = data.playerHealth;
-       // inventoryManager.items = data.currentItems;
+        //data.currentItems.Add(itemController.item);
         shooting.magSize = data.magSize;
         shooting.fullAmmo = data.currentAmmo;
+        currency.currentCurrency = data.currentCurrency;
 
         ValueDisplay.OnValueChanged.Invoke("fullAmmo", shooting.fullAmmo);
         ValueDisplay.OnValueChanged.Invoke("MagAmmo", shooting.magSize + "/");
         ValueDisplay.OnValueChanged.Invoke("PlayerHealth", health.currentHealth);
+        ValueDisplay.OnValueChanged.Invoke("PlayerCurrency", "$" + currency.currentCurrency);
 
     }
 }

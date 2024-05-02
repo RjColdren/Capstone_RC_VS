@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Code created by SoloGameDev, Partially edited by me. Link: https://www.youtube.com/watch?v=AoD_F1fSFFg
-
+[System.Serializable]
 public class InventoryItemController : MonoBehaviour
 {
 
     //instance of item
-    Item item;
+    public Item item;
 
     //creates a button reference
     public Button RemoveButton;

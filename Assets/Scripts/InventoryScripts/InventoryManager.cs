@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 //Code created by SoloGameDev, Partially edited by me. Link: https://www.youtube.com/watch?v=AoD_F1fSFFg
-
+[System.Serializable]
 public class InventoryManager : MonoBehaviour
 {
     //Scripts, Lists, transforms, gameObjects, toggles, arrays and buttons.

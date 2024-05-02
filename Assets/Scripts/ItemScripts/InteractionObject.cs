@@ -6,11 +6,13 @@ public class InteractionObject : MonoBehaviour
     [SerializeField] private string interactionText = "I'm an interactable object!";
     //Instantiates a UnityEvent variable.
     public Item item;
-    private void OnEnable()
+    public Currency currency;
+    public int cost;
+    public GameObject noCurrency;
+    private void Start()
     {
-      
+        currency = FindAnyObjectByType<Currency>();
     }
-
 
     public string GetInteractionText()
     {
@@ -21,9 +23,26 @@ public class InteractionObject : MonoBehaviour
     //when interacted with
     public void Interact()
     {
-        //adds the item from the inventory manager
+        if (cost <= currency.currentCurrency)
+        {
+            currency.RemoveCurrency(cost);
+            //adds the item from the inventory manager
             InventoryManager.Instance.Add(item);
-        //destroys the gameobject
+            //destroys the gameobject
             Destroy(gameObject);
+        }
+
+        else
+        {
+            noCurrency.SetActive(true);
+            Invoke("DisableUI", 1);
+        }
+        
+
+    }
+
+    public void DisableUI()
+    {
+        noCurrency.SetActive(false);
     }
 }
