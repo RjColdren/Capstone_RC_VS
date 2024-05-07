@@ -28,6 +28,7 @@ namespace CapstoneFps_RC
         public int reloadSize;
         public GameObject reloadUI;
         public GameObject noAmmoUI;
+        public GameObject fullAmmoUI;
         public GameObject fireParticle;
         public AudioSource source;
         public AudioClip fireSound; 
@@ -97,8 +98,6 @@ namespace CapstoneFps_RC
                     }
                 }
 
-             
-
             }
 
             //ensures the magSize will never go above 8.
@@ -113,6 +112,17 @@ namespace CapstoneFps_RC
             {
                 reloadAmount = fullAmmo;
             }
+
+            if (fullAmmo >= 192)
+            {
+                fullAmmo = 192;
+                fullAmmoUI.SetActive(true);
+            }
+            else
+            {
+                fullAmmoUI.SetActive(false);
+            }
+            
 
             //Sets "Aiming" in the animator to the value of aiming in the code
             animator.SetBool("Aiming", aiming);

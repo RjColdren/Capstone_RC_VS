@@ -14,6 +14,8 @@ namespace CapstoneFps_RC
         public int playerHealth;
         public int currentCurrency;
         public int reloadAmount;
+
+        public int artifact1, artifact2, artifact3;
         //public List<Item> currentItems = new List<Item>();
 
 

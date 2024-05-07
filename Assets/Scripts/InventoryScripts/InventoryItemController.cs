@@ -89,11 +89,12 @@ public class InventoryItemController : MonoBehaviour
                     break;
                 }
             
-                
-
                 //if it is an artifact, do nothing
-            case Item.ItemType.Artifact:
+            case Item.ItemType.Artifact1:
+                PlayerObjectInteraction.instance.IncreaseCash(item.value);
+                RemoveItem();
                 break;
+         
 
             case Item.ItemType.AmmoCrate:
                 PlayerObjectInteraction.instance.AddAmmo(item.value);

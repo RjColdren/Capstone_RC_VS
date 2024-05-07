@@ -16,7 +16,7 @@ public class Item : ScriptableObject
         public enum ItemType
     {
         HealthPotion,
-        Artifact,
+        Artifact1,
         AmmoCrate
     }
 }
