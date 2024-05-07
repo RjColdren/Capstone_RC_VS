@@ -24,6 +24,9 @@ public class InventoryManager : MonoBehaviour
     public Shooting shooting;
 
     public Button inventoryButton;
+
+    public GameObject fullHealthUI;
+    public GameObject fullAmmoUI;
     public void Awake()
     {
 
@@ -162,4 +165,13 @@ public class InventoryManager : MonoBehaviour
     }
 
    
+   /* public void WipeItems()
+    {
+        foreach (Item item in itemContent)
+        {
+            //Find the remove button and set it to true
+            items.Remove(item);
+        }
+    }
+   */
 }

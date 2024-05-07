@@ -5,6 +5,27 @@ public class Currency : MonoBehaviour
 {
     public int currentCurrency;
     public GameObject noCurrency;
+    public GameObject fullCurrency;
+    private void Update()
+    {
+        if (currentCurrency > 999)
+        {
+            currentCurrency = 999;
+            ValueDisplay.OnValueChanged.Invoke("PlayerCurrency", "$" + currentCurrency);
+        }
+
+        if (currentCurrency == 999)
+        {
+            fullCurrency.SetActive(true);
+        }
+        else
+        {
+            fullCurrency.SetActive(false);
+        }
+
+
+    }
+
     public void AddCurrency(int addAmount)
     {
       

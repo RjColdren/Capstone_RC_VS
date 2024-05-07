@@ -1,20 +1,49 @@
+using CapstoneFps_RC;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using TowerDefense;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 //Code created by SoloGameDev, Partially edited by me. Link: https://www.youtube.com/watch?v=AoD_F1fSFFg
 [System.Serializable]
 public class InventoryItemController : MonoBehaviour
 {
+    InventoryItemController instance;
+    public InventoryManager inventorymanager;
+    public Health health;
+    public Shooting ammo;
 
     //instance of item
     public Item item;
 
     //creates a button reference
     public Button RemoveButton;
-    
+    public GameObject fullHealthUI;
+    public GameObject fullAmmoUI;
+    private void Awake()
+    {
+        if (instance)
+        {
+            Destroy(this);
+
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+
+       inventorymanager = FindAnyObjectByType<InventoryManager>();
+       ammo = FindAnyObjectByType<Shooting>();
+
+        fullHealthUI = inventorymanager.fullHealthUI;
+        fullAmmoUI = inventorymanager.fullAmmoUI;
+
+    }
+
     //removes the item from the list
     public void RemoveItem()
     {
@@ -39,11 +68,29 @@ public class InventoryItemController : MonoBehaviour
         {
             //if it is a health potion
             case Item.ItemType.HealthPotion:
-                //Call increase health from PlayerObjectInteraction
-                PlayerObjectInteraction.instance.IncreaseHealth(item.value);
-                //Remove the item from the list
-                RemoveItem();
-                break;
+
+                if(health.currentHealth < 100)
+                {  
+                    //Call increase health from PlayerObjectInteraction
+                    PlayerObjectInteraction.instance.IncreaseHealth(item.value);
+                    //Remove the item from the list
+                    RemoveItem();
+                    break;
+
+                }
+                if (health.currentHealth >= 100)
+                {
+                    fullHealthUI.SetActive(true);
+                    Invoke("ResetHealthUI", 2);
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            
+                
+
                 //if it is an artifact, do nothing
             case Item.ItemType.Artifact:
                 break;
@@ -59,5 +106,15 @@ public class InventoryItemController : MonoBehaviour
         }
 
         
+    }
+
+    public void ResetHealthUI()
+    {
+        fullHealthUI.SetActive(false);
+    }
+
+    public void ResetAmmoUI()
+    {
+        fullAmmoUI.SetActive(false);
     }
 }

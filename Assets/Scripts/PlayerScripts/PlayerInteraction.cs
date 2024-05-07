@@ -31,14 +31,6 @@ public class PlayerInteraction : MonoBehaviour
 
             targetInteraction = raycastHit.collider.gameObject.GetComponent<InteractionObject>();
 
-            /* if (raycastHit.collider.gameObject.tag == "BuyableObject")
-            {
-                ValueDisplay.OnValueChanged.Invoke("ObjectCostText", "Costs: $" + targetInteraction.cost);
-            }
-            else
-            {
-                ValueDisplay.OnValueChanged.Invoke("ObjectCostText", "");
-            } */
         }
 
         if (targetInteraction && targetInteraction.enabled)

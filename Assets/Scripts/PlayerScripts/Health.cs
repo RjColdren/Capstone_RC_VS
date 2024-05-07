@@ -14,6 +14,31 @@ namespace TowerDefense
         //Initilizes 2 variables
         public GameObject parentPrefab;
         //Makes the object with this script "Take damage", Has 1 parameter
+        public GameObject healthFull;
+
+
+        private void Update()
+        {
+            if (currentHealth > 100)
+            {
+                currentHealth = 100;
+                ValueDisplay.OnValueChanged.Invoke(gameObject.name + "Health", currentHealth);
+            }
+
+            if (currentHealth == 100)
+            {
+                healthFull.SetActive(true);
+            }
+            else 
+            {
+                healthFull.SetActive(false);
+            }
+        }
+
+
+
+
+
         public void TakeDamage(int damageAmount)
         {
             //Makes the current health equal to it minus the amount of damage taken

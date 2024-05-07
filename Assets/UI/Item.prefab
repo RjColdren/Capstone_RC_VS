@@ -148,7 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4678cb5afa3a2b64497a2b4432f5eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorymanager: {fileID: 0}
+  health: {fileID: 2658751019235113510, guid: 17812f88cb1b9074599a1460f88ca631, type: 3}
+  ammo: {fileID: 0}
+  item: {fileID: 0}
   RemoveButton: {fileID: 6842371475874846532}
+  fullHealthUI: {fileID: 0}
+  fullAmmoUI: {fileID: 0}
 --- !u!1 &2450313193142990683
 GameObject:
   m_ObjectHideFlags: 0
