@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Ground
   - BuyableObject
+  - SF_Door
+  - NextLevel
   layers:
   - Default
   - TransparentFX

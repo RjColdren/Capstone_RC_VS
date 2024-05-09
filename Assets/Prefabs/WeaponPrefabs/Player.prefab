@@ -276,6 +276,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   parentPrefab: {fileID: 9094989100181082803}
+  healthFull: {fileID: 0}
+  source: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!114 &1387663585112957659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCurrency: 50
+  noCurrency: {fileID: 0}
+  fullCurrency: {fileID: 0}
 --- !u!1001 &2838041875199758913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,9 +488,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2431764410547044101}
     - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
+      propertyPath: noAmmo
+      value: 
+      objectReference: {fileID: 8300000, guid: d478ecc9a8d598c48bc02abe84008dfd, type: 3}
+    - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
       propertyPath: source
       value: 
       objectReference: {fileID: 1129543682987119724}
+    - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
+      propertyPath: bulletHole
+      value: 
+      objectReference: {fileID: 5569040693060925352, guid: f170630cdeee2b247af4f0ca19c25b7a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

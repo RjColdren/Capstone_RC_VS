@@ -16,6 +16,8 @@ namespace TowerDefense
         //Makes the object with this script "Take damage", Has 1 parameter
         public GameObject healthFull;
 
+        public AudioSource source;
+        public AudioClip hurtSound;
 
         private void Update()
         {
@@ -44,6 +46,8 @@ namespace TowerDefense
             //Makes the current health equal to it minus the amount of damage taken
             currentHealth -= damageAmount;
             ValueDisplay.OnValueChanged.Invoke(gameObject.name + "Health", currentHealth);
+
+            source.PlayOneShot(hurtSound);
 
 
             //IF current health is less than or equal to zero

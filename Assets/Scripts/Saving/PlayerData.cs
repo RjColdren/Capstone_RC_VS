@@ -14,18 +14,20 @@ namespace CapstoneFps_RC
         public int playerHealth;
         public int currentCurrency;
         public int reloadAmount;
+      //  public Item item = ScriptableObject.CreateInstance<Item>();
 
         public int artifact1, artifact2, artifact3;
         //public List<Item> currentItems = new List<Item>();
 
 
-        public PlayerData(Health health, Shooting ammo, Currency currency, ItemManager items) //InventoryManager inventory)
+        public PlayerData(Health health, Shooting ammo, Currency currency) //, InventoryItemController itemController)
         {
             magSize = ammo.magSize;
             currentAmmo = ammo.fullAmmo;
             playerHealth = health.currentHealth;
             currentCurrency = currency.currentCurrency;
             reloadAmount = ammo.reloadAmount;
+            //item = itemController.item;
            // currentItems = inventory.items;
         }
     }

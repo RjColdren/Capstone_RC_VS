@@ -30,9 +30,11 @@ namespace CapstoneFps_RC
         public GameObject noAmmoUI;
         public GameObject fullAmmoUI;
         public GameObject fireParticle;
+        public GameObject bulletHole;
         public AudioSource source;
         public AudioClip fireSound; 
         public AudioClip reloadSound;
+        public AudioClip noAmmo;
         public int reloadAmount;
         public bool firing = false;
 
@@ -99,6 +101,13 @@ namespace CapstoneFps_RC
                 }
 
             }
+
+            if (magSize == 0 && reloading == false && fireRate == 0)
+            {
+                source.PlayOneShot(noAmmo);
+                fireRate = 1;
+            }
+
 
             //ensures the magSize will never go above 8.
             if (magSize > 8)
@@ -288,6 +297,10 @@ namespace CapstoneFps_RC
                     health = hit.collider.GetComponent<Health>();
                     //cause the enemy to take damage
                     health.TakeDamage(damage);
+                }
+                else
+                {
+                    Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
                 }
             }
         }

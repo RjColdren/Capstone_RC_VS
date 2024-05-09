@@ -67,6 +67,8 @@ public class InventoryManager : MonoBehaviour
             //disable shooting
             shooting.enabled = true;
         }
+
+        PlayerPrefs.SetInt("items", items.Count);
     }
     //Adds an item to the list
     public void Add(Item item)

@@ -142,6 +142,8 @@ MonoBehaviour:
         m_CallState: 2
   parentPrefab: {fileID: 4124466507595902997}
   healthFull: {fileID: 870098742393020578, guid: ba170a52439f0bc48a5f7610e7ad011d, type: 3}
+  source: {fileID: 3653905660402810609}
+  hurtSound: {fileID: 8300000, guid: 387d9ee69d70c4244a8c063556a1ad6d, type: 3}
 --- !u!114 &3697106294194487337
 MonoBehaviour:
   m_ObjectHideFlags: 0

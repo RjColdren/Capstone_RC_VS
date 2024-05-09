@@ -8,13 +8,13 @@ namespace CapstoneFps_RC
     [System.Serializable]
     public static class SaveSystem
     {
-       public static void SavePlayer (Health health, Shooting ammo, Currency currency, ItemManager items) //InventoryItemController itemController)
+       public static void SavePlayer (Health health, Shooting ammo, Currency currency) //, InventoryItemController items) //InventoryItemController itemController)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/player.Capstone";
             FileStream stream = new FileStream(path, FileMode.Create);
 
-            PlayerData data = new PlayerData(health, ammo, currency, items); //itemController);
+            PlayerData data = new PlayerData(health, ammo, currency); //, items); //itemController);
             //InventoryData invData = new InventoryData(itemController);
 
             formatter.Serialize(stream, data);

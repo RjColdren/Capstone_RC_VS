@@ -1,10 +1,6 @@
 using CapstoneFps_RC;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using TowerDefense;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 //Code created by SoloGameDev, Partially edited by me. Link: https://www.youtube.com/watch?v=AoD_F1fSFFg
@@ -15,9 +11,10 @@ public class InventoryItemController : MonoBehaviour
     public InventoryManager inventorymanager;
     public Health health;
     public Shooting ammo;
-
+    public bool artifactGrabbed;
     //instance of item
     public Item item;
+
 
     //creates a button reference
     public Button RemoveButton;
@@ -42,6 +39,7 @@ public class InventoryItemController : MonoBehaviour
         fullHealthUI = inventorymanager.fullHealthUI;
         fullAmmoUI = inventorymanager.fullAmmoUI;
 
+        artifactGrabbed = false;
     }
 
     //removes the item from the list
@@ -57,8 +55,10 @@ public class InventoryItemController : MonoBehaviour
     public void AddItem(Item newItem)
     {
         //sets item to whatever newItem is
+        
         item = newItem;
-    }
+        item = ScriptableObject.CreateInstance<Item>();
+}
     
     //"Uses" the item 
     public void UseItem()
@@ -74,6 +74,8 @@ public class InventoryItemController : MonoBehaviour
                     //Call increase health from PlayerObjectInteraction
                     PlayerObjectInteraction.instance.IncreaseHealth(item.value);
                     //Remove the item from the list
+
+            
                     RemoveItem();
                     break;
 
@@ -90,11 +92,12 @@ public class InventoryItemController : MonoBehaviour
                 }
             
                 //if it is an artifact, do nothing
-            case Item.ItemType.Artifact1:
+            case Item.ItemType.Artifact:
                 PlayerObjectInteraction.instance.IncreaseCash(item.value);
+                artifactGrabbed = true;
                 RemoveItem();
                 break;
-         
+
 
             case Item.ItemType.AmmoCrate:
                 PlayerObjectInteraction.instance.AddAmmo(item.value);

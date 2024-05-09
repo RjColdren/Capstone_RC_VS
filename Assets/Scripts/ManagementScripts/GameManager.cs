@@ -40,9 +40,5 @@ using UnityEngine.SceneManagement;
             Application.Quit();
         }
 
-        public static void LoadArtifact3Scene()
-        {
-         
-        }
 
 }

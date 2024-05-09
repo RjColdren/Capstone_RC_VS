@@ -28,7 +28,7 @@ public class PlayerObjectInteraction : MonoBehaviour
         //finds the shooting component in the gameobjects child
         shooting = GetComponentInChildren<Shooting>();
 
-        currency = GetComponent<Currency>();
+        currency = FindAnyObjectByType<Currency>();
     }
 
     //Increases the health when called

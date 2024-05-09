@@ -10,7 +10,7 @@ public class SaveManager : MonoBehaviour
    // public InventoryItemController itemController;
     public Shooting shooting;
     public Currency currency;
-    public ItemManager itemManager;
+   // public InventoryItemController itemController;
     private void Start()
     {
         LoadAll();
@@ -18,7 +18,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveAll()
     {
-        SaveSystem.SavePlayer(health, shooting, currency, itemManager); //itemController);
+        SaveSystem.SavePlayer(health, shooting, currency); //, itemController);
     }
 
     public void LoadAll()
@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         health.currentHealth = data.playerHealth;
-        //data.currentItems.Add(itemController.item);
+       // itemController.AddItem(data.item);
         shooting.magSize = data.magSize;
         shooting.fullAmmo = data.currentAmmo;
         currency.currentCurrency = data.currentCurrency;
