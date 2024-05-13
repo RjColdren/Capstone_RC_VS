@@ -59,7 +59,7 @@ namespace CapstoneFps_RC
                         firing = true;
                         source.PlayOneShot(fireSound);
                         Instantiate(fireParticle, barrel.position, barrel.rotation);
-                        Destroy(fireParticle, 1);
+                        Destroy(fireParticle, 2);
                         
                         //calls fire
                         Shoot();

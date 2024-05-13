@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractionObject : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class InteractionObject : MonoBehaviour
     public Currency currency;
     public int cost;
     public GameObject noCurrency;
+
+    public UnityEvent extra = new UnityEvent();
     private void Start()
     {
         currency = FindAnyObjectByType<Currency>();
@@ -28,6 +31,8 @@ public class InteractionObject : MonoBehaviour
             currency.RemoveCurrency(cost);
             //adds the item from the inventory manager
             InventoryManager.Instance.Add(item);
+
+            extra.Invoke();
             //destroys the gameobject
             Destroy(gameObject);
         }

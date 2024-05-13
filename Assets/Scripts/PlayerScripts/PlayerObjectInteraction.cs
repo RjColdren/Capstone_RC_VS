@@ -51,5 +51,6 @@ public class PlayerObjectInteraction : MonoBehaviour
     public void IncreaseCash(int value)
     {
         currency.AddCurrency(value);
+
     }
 }

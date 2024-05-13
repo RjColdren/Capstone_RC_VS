@@ -3,24 +3,33 @@ using System.Collections;
 
 public class door : MonoBehaviour {
 	GameObject thedoor;
-    public InventoryItemController inventoryItemController;
+    //public InventoryItemController inventoryItemController;
     public SphereCollider sphereCollider;
-
+    public GameObject artifact;
+    public GameObject openDoor;
+    public GameObject useItems;
     private void Awake()
     {
-        sphereCollider.enabled = false;
+     //   sphereCollider.enabled = false;
      
         sphereCollider = GetComponent<SphereCollider>();
     }
     private void Update()
     {
-        inventoryItemController = FindAnyObjectByType<InventoryItemController>();
-        if (inventoryItemController.artifactGrabbed == true)
+       
+        if (artifact)
+        {
+            sphereCollider.enabled = false;
+        }
+
+        if (!artifact)
         {
             sphereCollider.enabled = true;
+            openDoor.SetActive(true);
+            useItems.SetActive(true);
         }
     }
-
+   
 
     void OnTriggerEnter (Collider obj)
     {

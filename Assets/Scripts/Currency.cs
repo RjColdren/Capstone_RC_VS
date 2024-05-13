@@ -8,13 +8,13 @@ public class Currency : MonoBehaviour
     public GameObject fullCurrency;
     private void Update()
     {
-        if (currentCurrency > 999)
+        if (currentCurrency > 999999)
         {
-            currentCurrency = 999;
+            currentCurrency = 999999;
             ValueDisplay.OnValueChanged.Invoke("PlayerCurrency", "$" + currentCurrency);
         }
 
-        if (currentCurrency == 999)
+        if (currentCurrency == 999999)
         {
             fullCurrency.SetActive(true);
         }
@@ -29,7 +29,7 @@ public class Currency : MonoBehaviour
     public void AddCurrency(int addAmount)
     {
       
-        if (currentCurrency >= 999)
+        if (currentCurrency >= 999999)
         {
             print("Your wallet is full");
         }

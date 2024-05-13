@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public bool spawn = true;
     public GameObject prefab;
     public float spawnRate = 1f;
+    public int spawnCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,16 @@ public class Spawner : MonoBehaviour
     //Coroutine that will spawn the prefabs
     IEnumerator Spawn()
     {
-        //while spawn is true
-        while (spawn)
+        for (int i = 0; i < spawnCount; i++)
         {
-            //instantiates a the prefab
-            Instantiate(prefab, transform.position, transform.rotation);
-            //waits for however long "spawnRate" is.
-            yield return new WaitForSeconds(spawnRate);
+            
+                //instantiates a the prefab
+                Instantiate(prefab, transform.position, transform.rotation);
+                //waits for however long "spawnRate" is.
+                yield return new WaitForSeconds(spawnRate);
+          
         }
+
+       
     }
 }

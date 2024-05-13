@@ -134,7 +134,7 @@ namespace CapstoneFps_RC
             {
                 source.PlayOneShot(fireSound);
                 Instantiate(fireParticle, barrel.position, barrel.rotation);
-                Destroy(fireParticle, 1);
+                Destroy(fireParticle, 2);
                 //instantiates a bullet in the gun
                 // Instantiate(bullet, barrel.position, barrel.rotation);
                 //sets attacked already to true

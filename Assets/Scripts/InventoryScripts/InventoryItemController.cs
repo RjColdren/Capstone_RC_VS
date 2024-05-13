@@ -57,7 +57,6 @@ public class InventoryItemController : MonoBehaviour
         //sets item to whatever newItem is
         
         item = newItem;
-        item = ScriptableObject.CreateInstance<Item>();
 }
     
     //"Uses" the item 
@@ -80,7 +79,7 @@ public class InventoryItemController : MonoBehaviour
                     break;
 
                 }
-                if (health.currentHealth >= 100)
+                if (health.currentHealth == 100)
                 {
                     fullHealthUI.SetActive(true);
                     Invoke("ResetHealthUI", 2);
