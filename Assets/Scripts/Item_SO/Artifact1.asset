@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 1
   itemName: Artifact1
   value: 100
-  icon: {fileID: 21300000, guid: e9dbcc49ff71dea4593541b69c751544, type: 3}
+  icon: {fileID: 21300000, guid: e4bf75f651eb91947881ea568d9c6562, type: 3}
   itemType: 1

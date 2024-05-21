@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class door : MonoBehaviour {
-	GameObject thedoor;
+	public GameObject thedoor;
     //public InventoryItemController inventoryItemController;
     public SphereCollider sphereCollider;
     public GameObject artifact;

@@ -4,7 +4,8 @@ public class CharacterMovement : MonoBehaviour
 {
     //Creates a reference to the CharacterController named "characterController"
     CharacterController characterController;
-    //creates a public float called 'moveSpeed' with a value of 5
+
+    //creates Variables and vectors
     public float moveSpeed = 5f;
 
     public float sprintSpeed = 50f;
@@ -19,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    //forms a layermask
     public LayerMask whatIsGround;
     // Start is called before the first frame update
     void Start()
@@ -42,8 +44,12 @@ public class CharacterMovement : MonoBehaviour
         //actually moves/calls the ability for the player to move.
         characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
+
+        //if player is holding shift
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            //Move faster
+        
             characterController.Move(moveDirection * sprintSpeed * Time.deltaTime);
         }
 
@@ -82,8 +88,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //IF the game tag is ground
         if (collision.gameObject.tag == "Ground")
         {
+            //falling is false
             falling = false; 
 
         }
@@ -91,8 +99,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnCollisionExit(Collision collision) 
     { 
+        //if the game tag is ground
       if (collision.gameObject.tag == "Ground")
         {
+            //falling is true
             falling = true;
         }
     }

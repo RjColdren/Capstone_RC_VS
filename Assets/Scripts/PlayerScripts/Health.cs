@@ -15,22 +15,24 @@ namespace TowerDefense
         public GameObject parentPrefab;
         //Makes the object with this script "Take damage", Has 1 parameter
         public GameObject healthFull;
-
+        //Audio for the health script
         public AudioSource source;
         public AudioClip hurtSound;
 
         private void Update()
         {
+            //ensures you cannot go above 100 health
             if (currentHealth > 100)
             {
                 currentHealth = 100;
                 ValueDisplay.OnValueChanged.Invoke(gameObject.name + "Health", currentHealth);
             }
-
+            //makes it so when you hit 100 health, it tells you you are full
             if (currentHealth == 100)
             {
                 healthFull.SetActive(true);
             }
+            //turns off health full to ensure the player doesn't get a mistaken full health value.
             else 
             {
                 healthFull.SetActive(false);

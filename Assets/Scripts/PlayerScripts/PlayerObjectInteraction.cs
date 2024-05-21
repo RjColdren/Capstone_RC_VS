@@ -11,7 +11,7 @@ public class PlayerObjectInteraction : MonoBehaviour
     Health health;
     //instance of the shooting script
     Shooting shooting;
-
+    //instance of the currency script
     Currency currency;
 
     private void Awake()
@@ -27,7 +27,7 @@ public class PlayerObjectInteraction : MonoBehaviour
         health = GetComponent<Health>();
         //finds the shooting component in the gameobjects child
         shooting = GetComponentInChildren<Shooting>();
-
+        //finds the Currency script in the scene
         currency = FindAnyObjectByType<Currency>();
     }
 
@@ -39,7 +39,7 @@ public class PlayerObjectInteraction : MonoBehaviour
         //Changes the display on the UI
         ValueDisplay.OnValueChanged.Invoke(gameObject.name + "Health", health.currentHealth);
     }
-
+    //adds ammo hwen called
     public void AddAmmo(int value)
     {
         //adds the full ammo and the new value/increased value
@@ -47,9 +47,10 @@ public class PlayerObjectInteraction : MonoBehaviour
         //changes the display on the UI
         ValueDisplay.OnValueChanged.Invoke("fullAmmo", shooting.fullAmmo);
     }
-
+    //increases the players cash when called
     public void IncreaseCash(int value)
     {
+        //adds the currency
         currency.AddCurrency(value);
 
     }

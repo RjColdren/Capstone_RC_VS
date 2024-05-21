@@ -1,14 +1,12 @@
-using CapstoneFps_RC;
-using System.Collections;
-using System.Collections.Generic;
 using TowerDefense;
-using UnityEngine;
+
 
 namespace CapstoneFps_RC
 {
     [System.Serializable]
     public class PlayerData
     {
+        //Variables
         public int magSize;
         public int currentAmmo;
         public int playerHealth;
@@ -16,15 +14,12 @@ namespace CapstoneFps_RC
         public int reloadAmount;
         public bool level1;
         public bool level2;
-
-      //  public Item item = ScriptableObject.CreateInstance<Item>();
-
         public int artifact1, artifact2, artifact3;
-        //public List<Item> currentItems = new List<Item>();
 
-
+        //creates a save for the data
         public PlayerData(Health health, Shooting ammo, Currency currency, LevelComplete complete) //, InventoryItemController itemController)
         {
+            //Saves all of the data
             magSize = ammo.magSize;
             currentAmmo = ammo.fullAmmo;
             playerHealth = health.currentHealth;

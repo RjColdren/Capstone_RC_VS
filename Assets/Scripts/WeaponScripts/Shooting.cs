@@ -93,17 +93,19 @@ namespace CapstoneFps_RC
                         //Changes the UI to display the current mag size
                         ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
                         
-
+                        //Increases the reload amount
                         reloadAmount++;
-
+                        //invokes SetAimToFalse after a second
                         Invoke("SetAimToFalse", 1f);
                     }
                 }
 
             }
 
+            //IF magsize is 0, reloading is false and fireRate is 0
             if (magSize == 0 && reloading == false && fireRate == 0)
             {
+                //Play the noammo sound
                 source.PlayOneShot(noAmmo);
                 fireRate = 1;
             }
@@ -112,6 +114,7 @@ namespace CapstoneFps_RC
             //ensures the magSize will never go above 8.
             if (magSize > 8)
             {
+                //sets magsize to 8
                 magSize = 8;
                 ValueDisplay.OnValueChanged.Invoke("MagAmmo", magSize + "/");
             }
@@ -121,14 +124,17 @@ namespace CapstoneFps_RC
             {
                 reloadAmount = fullAmmo;
             }
-
+            //makes sure fullAmmo never goes over 192
             if (fullAmmo >= 192)
             {
+                //sets fullAmmo to 192
                 fullAmmo = 192;
+                //sets the fullAmmoUI to true
                 fullAmmoUI.SetActive(true);
             }
             else
             {
+                //sets the fullAmmoUI to false
                 fullAmmoUI.SetActive(false);
             }
             
@@ -277,10 +283,12 @@ namespace CapstoneFps_RC
             RaycastHit hit;
             if (aiming)
             {
+                //sets aimShooting to true
                 animator.SetBool("AimShooting", true);
             }
             else
             {
+                //sets shooting to true
                 animator.SetBool("Shooting", true);
             }
             //if there is a raycast
@@ -300,21 +308,25 @@ namespace CapstoneFps_RC
                 }
                 else
                 {
+                    //Instantiates a bullet hole at the point the bullet hits
                     Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
                 }
             }
         }
-
+        //sets shooting to false
         public void SetToFalse()
         {
-  
+            //sets the animator bool "shooting" to false
             animator.SetBool("Shooting", false);
+            //firing is false
             firing = false;
         }
 
         public void SetAimToFalse()
         {
+            //sets the animator bool "aimshooting" to false
             animator.SetBool("AimShooting", false);
+            //firing is false
             firing = false;
         
         }

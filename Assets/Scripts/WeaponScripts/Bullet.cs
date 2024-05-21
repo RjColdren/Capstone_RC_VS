@@ -2,7 +2,7 @@ using TowerDefense;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
+//Scrapped, may be useful later.
 namespace CapstoneFps_RC
 {
     public class Bullet : MonoBehaviour

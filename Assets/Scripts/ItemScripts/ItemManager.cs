@@ -11,21 +11,28 @@ public class ItemManager : MonoBehaviour
     InventoryManager inventoryItems;
 
     //variables and Sprite.
-    public int id;
-    public string itemName;
-    public int value;
+    public List<int> id = new List<int>();
+    public List<string> itemName = new List<string>();
+    public List<int> value = new List<int>();
 
     private void Update()
     {
-        items = inventoryItems.items;
+        //creates a list equal to the amount of items in items
+        foreach (var item in inventoryItems.items)
+        {
+           items = inventoryItems.items;
+        }
     }
+
+    //
     public void ItemList()
     {
-       foreach (Item item in items) 
+        //adds each items id, name and value to a list
+       foreach (Item item in inventoryItems.items) 
         { 
-        id = item.id;
-        itemName = item.name;
-        value = item.value;
+        id.Add(item.id);
+        itemName.Add(item.name);
+        value.Add(item.value);
         }
     }
 
