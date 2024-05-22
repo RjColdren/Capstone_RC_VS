@@ -131,6 +131,7 @@ namespace CapstoneFps_RC
                 fullAmmo = 192;
                 //sets the fullAmmoUI to true
                 fullAmmoUI.SetActive(true);
+                ValueDisplay.OnValueChanged.Invoke("fullAmmo", fullAmmo);
             }
             else
             {

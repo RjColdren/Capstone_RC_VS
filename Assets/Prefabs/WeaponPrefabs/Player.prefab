@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af131aeba709dd4f86c1c5f11e27768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCurrency: 50
+  currentCurrency: 1315
   noCurrency: {fileID: 0}
   fullCurrency: {fileID: 0}
 --- !u!1001 &2838041875199758913
@@ -484,6 +484,10 @@ PrefabInstance:
       value: pistol2
       objectReference: {fileID: 0}
     - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
       propertyPath: fpsCam
       value: 
       objectReference: {fileID: 2431764410547044101}
@@ -496,9 +500,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1129543682987119724}
     - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
+      propertyPath: magSize
+      value: 228
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
       propertyPath: bulletHole
       value: 
       objectReference: {fileID: 5569040693060925352, guid: f170630cdeee2b247af4f0ca19c25b7a, type: 3}
+    - target: {fileID: 4875776141635511476, guid: f29032309307dc04b8b4979c1dfeade0, type: 3}
+      propertyPath: reloadSize
+      value: 328
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

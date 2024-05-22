@@ -127,23 +127,13 @@ MonoBehaviour:
   currentHealth: 10
   OnZeroHealth:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6040819553687507222, guid: 17812f88cb1b9074599a1460f88ca631, type: 3}
-        m_TargetAssemblyTypeName: Currency, Assembly-CSharp
-        m_MethodName: AddCurrency
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 12
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   parentPrefab: {fileID: 4124466507595902997}
   healthFull: {fileID: 870098742393020578, guid: ba170a52439f0bc48a5f7610e7ad011d, type: 3}
   source: {fileID: 3653905660402810609}
   hurtSound: {fileID: 8300000, guid: 387d9ee69d70c4244a8c063556a1ad6d, type: 3}
+  playerMoney: 12
+  currency: {fileID: 0}
 --- !u!114 &3697106294194487337
 MonoBehaviour:
   m_ObjectHideFlags: 0

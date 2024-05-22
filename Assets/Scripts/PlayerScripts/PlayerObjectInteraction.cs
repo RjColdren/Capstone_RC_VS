@@ -51,7 +51,7 @@ public class PlayerObjectInteraction : MonoBehaviour
     public void IncreaseCash(int value)
     {
         //adds the currency
-        currency.AddCurrency(value);
-
+        currency.currentCurrency += value;
+        ValueDisplay.OnValueChanged.Invoke("PlayerCurrency", "$" + currency.currentCurrency);
     }
 }

@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3307006683089904097, guid: 2fd3d91b41d0f8b44a6caf19aab218bc, type: 3}
+      propertyPath: playerMoney
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307006683089904097, guid: 2fd3d91b41d0f8b44a6caf19aab218bc, type: 3}
       propertyPath: currentHealth
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3307006683089904097, guid: 2fd3d91b41d0f8b44a6caf19aab218bc, type: 3}
       propertyPath: OnZeroHealth.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3307006683089904097, guid: 2fd3d91b41d0f8b44a6caf19aab218bc, type: 3}
       propertyPath: OnZeroHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

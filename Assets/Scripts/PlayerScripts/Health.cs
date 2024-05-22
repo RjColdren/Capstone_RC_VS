@@ -18,6 +18,13 @@ namespace TowerDefense
         //Audio for the health script
         public AudioSource source;
         public AudioClip hurtSound;
+        public int playerMoney;
+        public Currency currency;
+
+        private void Start()
+        {
+            currency = FindAnyObjectByType<Currency>();
+        }
 
         private void Update()
         {
@@ -60,7 +67,7 @@ namespace TowerDefense
                 //Destroys the parent prefab
                 Destroy(parentPrefab);
 
-             
+                currency.AddCurrency(playerMoney);
                 //Invokes the UnityEvent
                 OnZeroHealth.Invoke();
             }
